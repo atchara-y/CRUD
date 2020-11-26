@@ -1,0 +1,35 @@
+
+
+<h1>All User</h1>
+
+<table>
+    <tr>
+        <td>UserId</td>
+        <td>Username</td>
+        <td>first_name</td>
+        <td>last_name</td>
+        <td>create_by</td>
+        <td>create_date</td>
+        <td>last_update_by</td>
+        <td>last_update_date</td>
+        <td>edit</td>
+        <td>delete</td>
+    </tr>
+    <% tUserTable.forEach(function(item) { %>
+    <tr>
+        <td><%= item.userId %></td>
+        <td><%= item.username %></td>
+        <td><%= item.first_name %></td>
+        <td><%= item.last_name %></td>
+        <td><%= item.create_by %></td>
+        <td><%= item.create_date %></td>
+        <td><%= item.last_update_by %></td>
+        <td><%= item.last_update_date %></td>
+        <td><a href="/addEditForm?userId=<%= item.userId %>">click</a></td>
+        <td><a href="/delete?userId=<% item.userId %>" onClick="return confirm('Delete?')">click</a></td>
+    </tr>
+    <% }) %>
+
+    <a href="/searchForm">Search</a>
+    <a href="/addEditForm">New User</a>
+</table>

@@ -1,0 +1,30 @@
+<table>
+    <tr>
+        <td>UserId</td>
+        <td>Username</td>
+        <td>first_name</td>
+        <td>last_name</td>
+        <td>create_by</td>
+        <td>create_date</td>
+        <td>last_update_by</td>
+        <td>last_update_date</td>
+        <td>edit</td>
+        <td>delete</td>
+    </tr>
+    <tr>
+        <td><%= tUserTable.userId %></td>
+        <td><%= tUserTable.username %></td>
+        <td><%= tUserTable.first_name %></td>
+        <td><%= tUserTable.last_name %></td>
+        <td><%= tUserTable.create_by %></td>
+        <td><%= tUserTable.create_date %></td>
+        <td><%= tUserTable.last_update_by %></td>
+        <td><%= tUserTable.last_update_date %></td>
+        <td><a href="/addEditForm?userId=<%= tUserTable.userId %>">click</a></td>
+        <td><a href="/delete?userId=<% tUserTable.userId %>" onClick="return confirm('Delete?')">click</a></td>
+
+      <a href="">Go Back</a>
+    <a href="/addEditForm">New User</a>
+     
+    </tr>
+</table>
