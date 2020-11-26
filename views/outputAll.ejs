@@ -25,8 +25,10 @@
         <td><%= item.create_date %></td>
         <td><%= item.last_update_by %></td>
         <td><%= item.last_update_date %></td>
-        <td><a href="/addEditForm?userId=<%= item.userId %>">click</a></td>
-        <td><a href="/delete?userId=<% item.userId %>" onClick="return confirm('Delete?')">click</a></td>
+        <td>
+        <a href="/edit?userId=<%= item.userId %>">click</a>
+         <a href="/delete?userId=<%= item.userId %>" onClick="return confirm('Delete?')">Delete</a>
+        </td>
     </tr>
     <% }) %>
 

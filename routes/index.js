@@ -51,46 +51,44 @@ router.get('/addEditForm', function(req, res, next) {
 
 // insert
 router.post('/addEditForm', function (req, res, next) {
-  let body = {
-    username: req.body.username,
-   first_name: req.body.first_name,
-    last_name: req.body.last_name,
-    create_by: req.body.username,
-    create_date: '26/11/63',
-    last_update_by: req.body.username,
-    last_update_date: '26/11/63'
-  }
-  console.log(body);
-  db.query('INSERT INTO tUserTable SET ?', body, function (err, response) {
+  // let body = {
+  //   username: req.body.username,
+  //  first_name: req.body.first_name,
+  //   last_name: req.body.last_name,
+  //   create_by: req.body.username,
+  //   create_date: '26/11/63',
+  //   last_update_by: req.body.username,
+  //   last_update_date: '26/11/63'
+  // }
+  db.query('INSERT INTO tUserTable SET ?', req.body, function (err, response) {
     console.log(response);
     res.redirect('/outputAll')
   });
 })
 
 //edit
-router.get('/addEditForm', function (req, res, next) {
+router.get('/edit', function (req, res, next) {
   db.query('SELECT * FROM tUserTable WHERE userId = ?', req.query.userId, function (err, response) {
+    console.log(response);
     res.render('addEditForm', { tUserTable: response[0] });
   })
 })
 
 //update
-router.post('/addEditForm', function (req, res, next) {
+router.post('/edit', function (req, res, next) {
   const param = [
     req.body,
-    req.query.user_id
+    req.query.userId
   ]
   console.log(param);
-  db.query('UPDATE testTable SET ? WHERE user_id = ?', param, function (err, response) {
+  db.query('UPDATE tUserTable SET ? WHERE userId = ?', param, function (err, response) {
      res.redirect('/outputAll');
   })
 })
 
 //delete
 router.get('/delete', function (req, res, next) {
-  console.log(req.query.userId);
   db.query('DELETE FROM tUserTable WHERE userId = ?', req.query.userId, function (err, response) {
-    console.log(response);
     res.redirect('/outputAll');
   })
 })
